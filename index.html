@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Friends of Friends – Practice Clone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="#" class="site-header__logo">FvF Studio</a>
+      <nav class="site-header__nav">
+        <a href="#" class="nav-link is-active">Stories</a>
+        <a href="#" class="nav-link">Cities</a>
+        <a href="#" class="nav-link">People</a>
+        <a href="#" class="nav-link">About</a>
+      </nav>
+      <button class="site-header__menu-button" aria-label="Toggle navigation">
+        <span class="menu-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="page">
+    <!-- Hero / Featured story -->
+    <section class="hero">
+      <article class="hero-card">
+        <div class="hero-card__image-wrap">
+          <img
+            src="https://images.pexels.com/photos/2696469/pexels-photo-2696469.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            alt="Creative studio interior"
+            class="hero-card__image"
+          />
+        </div>
+        <div class="hero-card__content">
+          <div class="hero-card__meta">
+            <span class="hero-card__tag">Culture</span>
+            <span class="hero-card__divider">·</span>
+            <span class="hero-card__location">Berlin, Germany</span>
+          </div>
+          <h1 class="hero-card__title">
+            Moments in 2026 that are quietly reshaping creative life
+          </h1>
+          <p class="hero-card__excerpt">
+            A look inside studios, homes, and cities where designers, artists, and musicians
+            are building slower, more intentional ways of working.
+          </p>
+          <a href="#" class="hero-card__link">Read the story</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Latest stories / Grid -->
+    <section class="section section--padded">
+      <header class="section__header">
+        <h2 class="section__title">Latest stories</h2>
+        <a href="#" class="section__link">View all</a>
+      </header>
+
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <article class="story-card">
+          <a href="#" class="story-card__image-link">
+            <img
+              src="https://images.pexels.com/photos/2696468/pexels-photo-2696468.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Minimalist living room"
+              class="story-card__image"
+            />
+          </a>
+          <div class="story-card__meta">
+            <span class="story-card__category">Home</span>
+            <span class="story-card__location">Copenhagen</span>
+          </div>
+          <h3 class="story-card__title">
+            A daylight-filled apartment built around books and plants
+          </h3>
+          <p class="story-card__excerpt">
+            Inside a small space that balances calm, texture, and quiet rituals.
+          </p>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="story-card">
+          <a href="#" class="story-card__image-link">
+            <img
+              src="https://images.pexels.com/photos/37347/office-freelancer-computer-business-37347.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Designer at desk"
+              class="story-card__image"
+            />
+          </a>
+          <div class="story-card__meta">
+            <span class="story-card__category">Work</span>
+            <span class="story-card__location">Seoul</span>
+          </div>
+          <h3 class="story-card__title">
+            Building a studio that works in both analog and digital
+          </h3>
+          <p class="story-card__excerpt">
+            Two friends rethink how to collaborate across time zones and mediums.
+          </p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="story-card">
+          <a href="#" class="story-card__image-link">
+            <img
+              src="https://images.pexels.com/photos/3965552/pexels-photo-3965552.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="City at dusk"
+              class="story-card__image"
+            />
+          </a>
+          <div class="story-card__meta">
+            <span class="story-card__category">City</span>
+            <span class="story-card__location">Mexico City</span>
+          </div>
+          <h3 class="story-card__title">
+            Night walks, corner cafes, and the soft edges of a huge city
+          </h3>
+          <p class="story-card__excerpt">
+            A photographer maps everyday routes that quietly shape their work.
+          </p>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="story-card">
+          <a href="#" class="story-card__image-link">
+            <img
+              src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Artist studio"
+              class="story-card__image"
+            />
+          </a>
+          <div class="story-card__meta">
+            <span class="story-card__category">Portrait</span>
+            <span class="story-card__location">Melbourne</span>
+          </div>
+          <h3 class="story-card__title">
+            Inside a painter’s converted warehouse, light becomes a tool
+          </h3>
+          <p class="story-card__excerpt">
+            How one artist turned an industrial shell into a gentle workspace.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+      <div class="newsletter__inner">
+        <div class="newsletter__content">
+          <h2 class="newsletter__title">Stay in the loop</h2>
+          <p class="newsletter__text">
+            Sign up for occasional letters about new stories, spaces, and people
+            shaping creative culture around the world.
+          </p>
+        </div>
+        <form class="newsletter__form">
+          <label class="newsletter__label">
+            <span class="newsletter__label-text">Email address</span>
+            <input
+              type="email"
+              class="newsletter__input"
+              placeholder="name@example.com"
+              required
+            />
+          </label>
+          <button type="submit" class="newsletter__button">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__left">
+        <span class="site-footer__brand">FvF Studio</span>
+        <span class="site-footer__copyright">
+          © 2026 FvF Studio – For practice only
+        </span>
+      </div>
+      <div class="site-footer__right">
+        <a href="#" class="footer-link">Imprint</a>
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link footer-link--icon">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
