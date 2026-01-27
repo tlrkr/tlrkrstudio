@@ -450,7 +450,7 @@ body {
   }
 }
 
-/* Nav dropdown – 가로 언더바 스타일 */
+/* Nav dropdown – FvF 스타일 가로 바 */
 
 .nav-item {
   position: relative;
@@ -465,38 +465,36 @@ body {
   color: inherit;
 }
 
-/* 데스크톱 기본: 안 보이게 */
+/* 데스크톱: 상단 메뉴 바로 아래에 얇은 바 + 가로 항목 */
 .nav-submenu {
   position: absolute;
-  left: 0;
-  right: 0;                 /* 메뉴 아래 전체 너비 */
-  top: 100%;               /* 바로 아래 붙이기 */
-  margin-top: 8px;
+  left: 50%;
+  transform: translate(-50%, 4px);  /* 메뉴 중앙 기준, 약간 아래 */
+  top: 100%;
   display: flex;
-  gap: 16px;
-  padding: 8px 0;
-  border-top: 1px solid var(--border);   /* 가로 언더바 느낌 */
-  border-bottom: 1px solid var(--border);
-  background: transparent;
+  gap: 24px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);  /* 살짝 흰 바 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(4px);
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
   z-index: 30;
 }
 
 .nav-submenu__item {
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-decoration: none;
   color: var(--muted);
   white-space: nowrap;
   position: relative;
-  padding-bottom: 4px;
+  padding-bottom: 3px;
 }
 
-/* 서브 항목 hover 시 개별 밑줄 */
+/* 서브 항목 hover 시 작은 언더바 */
 .nav-submenu__item:hover {
   color: var(--text);
 }
@@ -511,14 +509,47 @@ body {
   background: var(--accent);
 }
 
-/* 데스크톱: 메뉴 롤오버 시 가로 바 노출 */
+/* 데스크톱: nav-item 롤오버 시 바 노출 */
 @media (min-width: 721px) {
   .nav-item.has-submenu:hover .nav-submenu {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translate(-50%, 0); /* 살짝 위로 당겨서 딱 붙게 */
   }
 }
+
+/* 모바일: 햄버거 열렸을 때 세로 리스트 */
+
+@media (max-width: 720px) {
+  .nav-item.has-submenu {
+    width: 100%;
+  }
+
+  .nav-submenu {
+    position: static;
+    transform: none;
+    display: block;
+    padding: 4px 0 8px;
+    margin-top: 4px;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-submenu__item {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    padding-bottom: 4px;
+  }
+
+  .nav-submenu__item::after {
+    display: none; /* 모바일에서는 언더바 생략 */
+  }
+}
+
 
 /* 모바일: 햄버거 열렸을 때 세로 리스트로 표시 */
 
