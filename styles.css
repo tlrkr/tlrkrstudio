@@ -492,14 +492,11 @@ body {
   background: rgba(0, 0, 0, 0.03);
 }
 
-/* 데스크톱: 호버 시 열기 */
-
-@media (min-width: 721px) {
-  .nav-item.has-submenu:hover .nav-submenu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
+/* .is-open 상태에서 열기 (공통) */
+.nav-item.has-submenu.is-open .nav-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 /* 모바일에서 nav--open일 때 서브메뉴도 함께 세로 배치 */
