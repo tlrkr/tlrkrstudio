@@ -1,5 +1,4 @@
 // 단순한 모바일 메뉴 토글 (연습용)
-
 const menuButton = document.querySelector(".site-header__menu-button");
 const nav = document.querySelector(".site-header__nav");
 
@@ -7,6 +6,7 @@ if (menuButton && nav) {
   menuButton.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("nav--open");
     menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
     if (isOpen) {
       nav.style.display = "flex";
       nav.style.flexDirection = "column";
@@ -25,15 +25,12 @@ if (menuButton && nav) {
 }
 
 // 데스크톱에서도 클릭으로 서브메뉴 토글 (모바일 공통)
-
-const navToggles = document.querySelectorAll(".nav-item.has-submenu .nav-toggle");
+const navToggles = document.querySelectorAll(
+  ".nav-item.has-submenu .nav-toggle"
+);
 
 navToggles.forEach((btn) => {
   const item = btn.closest(".nav-item");
-  const submenu = item.querySelector(".nav-submenu");
-
-  // 안전 체크
-  if (!submenu) return;
 
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -44,21 +41,14 @@ navToggles.forEach((btn) => {
     document
       .querySelectorAll(".nav-item.has-submenu.is-open")
       .forEach((openItem) => {
-        if (openItem !== item) {
-          openItem.classList.remove("is-open");
-        }
+        if (openItem !== item) openItem.classList.remove("is-open");
       });
 
+    // 현재 메뉴 토글
     if (isOpen) {
       item.classList.remove("is-open");
-      submenu.style.opacity = "";
-      submenu.style.visibility = "";
-      submenu.style.transform = "";
     } else {
       item.classList.add("is-open");
-      submenu.style.opacity = "1";
-      submenu.style.visibility = "visible";
-      submenu.style.transform = "translateY(0)";
     }
   });
 });
@@ -67,21 +57,10 @@ navToggles.forEach((btn) => {
 document.addEventListener("click", () => {
   document
     .querySelectorAll(".nav-item.has-submenu.is-open")
-    .forEach((openItem) => {
-      const submenu = openItem.querySelector(".nav-submenu");
-      openItem.classList.remove("is-open");
-      if (submenu) {
-        submenu.style.opacity = "";
-        submenu.style.visibility = "";
-        submenu.style.transform = "";
-      }
-    });
+    .forEach((openItem) => openItem.classList.remove("is-open"));
 });
 
-
-
 // 뉴스레터 폼 더미 핸들러
-
 const newsletterForm = document.querySelector(".newsletter__form");
 
 if (newsletterForm) {
