@@ -450,7 +450,7 @@ body {
   }
 }
 
-/* Nav dropdown – FvF 스타일 가로 바 */
+/* Nav dropdown – FvF 스타일 이식 */
 
 .nav-item {
   position: relative;
@@ -465,61 +465,81 @@ body {
   color: inherit;
 }
 
-/* 데스크톱: 상단 메뉴 바로 아래에 얇은 바 + 가로 항목 */
-.nav-submenu {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 4px);  /* 메뉴 중앙 기준, 약간 아래 */
-  top: 100%;
-  display: flex;
-  gap: 24px;
-  padding: 10px 24px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);  /* 살짝 흰 바 */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
-  z-index: 30;
-}
-
-.nav-submenu__item {
-  font-size: 11px;
+/* 메인 메뉴(Stories 같은) 텍스트 + 밑줄 */
+.nav-link {
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   text-decoration: none;
   color: var(--muted);
-  white-space: nowrap;
   position: relative;
-  padding-bottom: 3px;
 }
 
-/* 서브 항목 hover 시 작은 언더바 */
-.nav-submenu__item:hover {
+.nav-link.is-active,
+.nav-link:hover {
   color: var(--text);
 }
 
-.nav-submenu__item:hover::after {
+.nav-link.is-active::after,
+.nav-link:hover::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
+  bottom: -6px;
+  width: 18px;
+  height: 2px;
   background: var(--accent);
 }
 
-/* 데스크톱: nav-item 롤오버 시 바 노출 */
+/* 데스크톱 서브메뉴 영역 (FvF: .sub-nav-dropdown) */
+.nav-submenu {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 100vw;
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  padding: 24px 0;
+
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 30;
+}
+
+/* 서브 항목 (FvF: .sub-nav-item) */
+.nav-submenu__item {
+  color: #111;
+  font-size: 14px;
+  font-family: Nunito Sans, var(--font-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 17.5px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-submenu__item:hover {
+  text-decoration: underline #111111 2px;
+  text-underline-offset: 4px;
+}
+
+/* 데스크톱: 상단 메뉴에 롤오버하면 서브메뉴 나타남 */
 @media (min-width: 721px) {
   .nav-item.has-submenu:hover .nav-submenu {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, 0); /* 살짝 위로 당겨서 딱 붙게 */
+    transform: translate(-50%, 0);
   }
 }
 
-/* 모바일: 햄버거 열렸을 때 세로 리스트 */
-
+/* 모바일: 햄버거 열렸을 때 세로 리스트로 */
 @media (max-width: 720px) {
   .nav-item.has-submenu {
     width: 100%;
@@ -528,27 +548,28 @@ body {
   .nav-submenu {
     position: static;
     transform: none;
-    display: block;
-    padding: 4px 0 8px;
+    width: 100%;
     margin-top: 4px;
-    background: transparent;
-    box-shadow: none;
-    border-radius: 0;
+    padding: 4px 0 8px;
+    display: block;
     opacity: 1;
     visibility: visible;
+    background: transparent;
   }
 
   .nav-submenu__item {
     display: block;
     font-size: 13px;
-    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     padding-bottom: 4px;
   }
 
-  .nav-submenu__item::after {
-    display: none; /* 모바일에서는 언더바 생략 */
+  .nav-submenu__item:hover {
+    text-decoration: none;
   }
 }
+
 
 
 /* 모바일: 햄버거 열렸을 때 세로 리스트로 표시 */
