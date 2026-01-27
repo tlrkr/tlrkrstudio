@@ -12,11 +12,23 @@
     <div class="site-header__inner">
       <a href="#" class="site-header__logo">FvF Studio</a>
       <nav class="site-header__nav">
-        <a href="#" class="nav-link is-active">Stories</a>
-        <a href="#" class="nav-link">Cities</a>
-        <a href="#" class="nav-link">People</a>
-        <a href="#" class="nav-link">About</a>
-      </nav>
+  <div class="nav-item has-submenu">
+    <button class="nav-link nav-toggle" type="button">
+      Stories
+    </button>
+    <div class="nav-submenu">
+      <a href="#" class="nav-submenu__item">All stories</a>
+      <a href="#" class="nav-submenu__item">Homes & Spaces</a>
+      <a href="#" class="nav-submenu__item">People</a>
+      <a href="#" class="nav-submenu__item">City Guides</a>
+    </div>
+  </div>
+
+  <a href="#" class="nav-link">Cities</a>
+  <a href="#" class="nav-link">People</a>
+  <a href="#" class="nav-link">About</a>
+</nav>
+
       <button class="site-header__menu-button" aria-label="Toggle navigation">
         <span class="menu-icon"></span>
       </button>
