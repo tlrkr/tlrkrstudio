@@ -24,42 +24,6 @@ if (menuButton && nav) {
   });
 }
 
-// 데스크톱에서도 클릭으로 서브메뉴 토글 (모바일 공통)
-const navToggles = document.querySelectorAll(
-  ".nav-item.has-submenu .nav-toggle"
-);
-
-navToggles.forEach((btn) => {
-  const item = btn.closest(".nav-item");
-
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    const isOpen = item.classList.contains("is-open");
-
-    // 다른 열린 메뉴 닫기
-    document
-      .querySelectorAll(".nav-item.has-submenu.is-open")
-      .forEach((openItem) => {
-        if (openItem !== item) openItem.classList.remove("is-open");
-      });
-
-    // 현재 메뉴 토글
-    if (isOpen) {
-      item.classList.remove("is-open");
-    } else {
-      item.classList.add("is-open");
-    }
-  });
-});
-
-// 바깥 클릭 시 닫기
-document.addEventListener("click", () => {
-  document
-    .querySelectorAll(".nav-item.has-submenu.is-open")
-    .forEach((openItem) => openItem.classList.remove("is-open"));
-});
-
 // 뉴스레터 폼 더미 핸들러
 const newsletterForm = document.querySelector(".newsletter__form");
 
