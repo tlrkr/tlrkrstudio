@@ -1,76 +1,76 @@
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+// 단순한 모바일 메뉴 토글 (연습용)
+const menuButton = document.querySelector(".site-header__menu-button");
+const nav = document.querySelector(".site-header__nav");
+
+if (menuButton && nav) {
+  menuButton.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("nav--open");
+    menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+    if (isOpen) {
+      nav.style.display = "flex";
+      nav.style.flexDirection = "column";
+      nav.style.position = "absolute";
+      nav.style.top = "56px";
+      nav.style.right = "16px";
+      nav.style.background = "rgba(245,243,240,0.97)";
+      nav.style.padding = "12px 16px";
+      nav.style.borderRadius = "14px";
+      nav.style.boxShadow = "0 12px 30px rgba(0,0,0,0.12)";
+      nav.style.gap = "12px";
+    } else {
+      nav.removeAttribute("style");
+    }
+  });
+}
+
+// 데스크톱에서도 클릭으로 서브메뉴 토글 (모바일 공통)
+const navToggles = document.querySelectorAll(
+  ".nav-item.has-submenu .nav-toggle"
+);
+
+navToggles.forEach((btn) => {
+  const item = btn.closest(".nav-item");
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    const isOpen = item.classList.contains("is-open");
+
+    // 다른 열린 메뉴 닫기
+    document
+      .querySelectorAll(".nav-item.has-submenu.is-open")
+      .forEach((openItem) => {
+        if (openItem !== item) openItem.classList.remove("is-open");
       });
+
+    // 현재 메뉴 토글
+    if (isOpen) {
+      item.classList.remove("is-open");
+    } else {
+      item.classList.add("is-open");
     }
   });
 });
 
-// Newsletter form submission
-const newsletterForm = document.querySelector('.newsletter-form');
+// 바깥 클릭 시 닫기
+document.addEventListener("click", () => {
+  document
+    .querySelectorAll(".nav-item.has-submenu.is-open")
+    .forEach((openItem) => openItem.classList.remove("is-open"));
+});
+
+// 뉴스레터 폼 더미 핸들러
+const newsletterForm = document.querySelector(".newsletter__form");
+
 if (newsletterForm) {
-  newsletterForm.addEventListener('submit', function(e) {
+  newsletterForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const emailInput = this.querySelector('.newsletter-input');
-    const email = emailInput.value;
-    
-    if (email) {
-      alert(`Thank you for subscribing! We'll send updates to ${email}`);
-      emailInput.value = '';
-    }
+    const input = newsletterForm.querySelector(".newsletter__input");
+    if (!input) return;
+    const email = input.value.trim();
+    if (!email) return;
+    alert(`Subscribed (practice only): ${email}`);
+    input.value = "";
   });
 }
-
-// Search button
-const searchBtn = document.querySelector('.search-box');
-if (searchBtn) {
-  searchBtn.addEventListener('click', function() {
-    alert('Search feature coming soon!');
-  });
-}
-
-// Fade-in animation on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -100px 0px'
-};
-
-const fadeInObserver = new IntersectionObserver(function(entries) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      fadeInObserver.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-// Apply fade-in to story items
-document.querySelectorAll('.story-item, .story-item-small, .reel-item, .large-story').forEach(item => {
-  item.style.opacity = '0';
-  item.style.transform = 'translateY(30px)';
-  item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  fadeInObserver.observe(item);
-});
-
-// Header scroll effect
-let lastScroll = 0;
-const header = document.querySelector('.header');
-
-window.addEventListener('scroll', function() {
-  const currentScroll = window.pageYOffset;
-  
-  if (currentScroll > 100) {
-    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
-  } else {
-    header.style.boxShadow = 'none';
-  }
-  
-  lastScroll = currentScroll;
-});
