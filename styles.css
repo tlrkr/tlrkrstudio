@@ -79,15 +79,18 @@ body {
   color: var(--text);
 }
 
-.nav-link.is-active::after {
+/* 활성 + 호버 둘 다 밑줄 표시 */
+.nav-link.is-active::after,
+.nav-link:hover::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: -6px;
-  width: 18px;
+  width: 18px;          /* 밑줄 길이, 더 길게 하고 싶으면 늘려도 됨 */
   height: 2px;
   background: var(--accent);
 }
+
 
 /* Mobile menu button */
 
