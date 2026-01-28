@@ -1,6 +1,6 @@
-// 단순한 모바일 메뉴 토글 (연습용)
-const menuButton = document.querySelector(".site-header__menu-button");
-const nav = document.querySelector(".site-header__nav");
+// main.js 맨 위 부분을 이렇게 수정
+const menuButton = document.querySelector(".site-header-menu-button");
+const nav = document.querySelector(".site-header-nav");
 
 if (menuButton && nav) {
   menuButton.addEventListener("click", () => {
