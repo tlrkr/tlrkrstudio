@@ -7,20 +7,22 @@ if (menuButton && nav) {
     const isOpen = nav.classList.toggle("nav--open");
     menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
 
-    if (isOpen) {
-      nav.style.display = "flex";
-      nav.style.flexDirection = "column";
-      nav.style.position = "absolute";
-      nav.style.top = "56px";
-      nav.style.right = "16px";
-      nav.style.background = "rgba(245,243,240,0.97)";
-      nav.style.padding = "12px 16px";
-      nav.style.borderRadius = "14px";
-      nav.style.boxShadow = "0 12px 30px rgba(0,0,0,0.12)";
-      nav.style.gap = "12px";
-    } else {
-      nav.removeAttribute("style");
-    }
+    // main.js – 메뉴 열릴 때 스타일 최소화
+if (isOpen) {
+  nav.style.display = "flex";
+  nav.style.flexDirection = "column";
+  nav.style.position = "absolute";
+  nav.style.top = "56px";
+  nav.style.left = "0";
+  nav.style.right = "0";
+  nav.style.background = "rgba(245,243,240,0.97)";
+  nav.style.padding = "12px 16px";
+  nav.style.borderRadius = "0";       // <- 둥근 모서리 제거
+  nav.style.boxShadow = "none";       // <- 그림자 제거
+  nav.style.gap = "12px";
+} else {
+  nav.removeAttribute("style");
+}
   });
 }
 
