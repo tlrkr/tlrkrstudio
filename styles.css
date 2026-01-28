@@ -440,11 +440,11 @@ body {
 }
 
 @media (max-width: 720px) {
-  .site-header__nav {
+  .site-header-nav {
     display: none;
   }
 
-  .site-header__menu-button {
+  .site-header-menu-button {
     display: block;
   }
 
@@ -460,6 +460,7 @@ body {
     font-size: 26px;
   }
 }
+
 
 /* 드롭다운 전체가 헤더 폭만큼 펼쳐지고 가운데 정렬되도록 */
 .nav-item {
