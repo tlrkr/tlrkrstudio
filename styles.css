@@ -29,8 +29,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Header / Navbar */
-
+/* Header Navbar */
 .site-header {
   position: sticky;
   top: 0;
@@ -40,31 +39,42 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-.site-header__inner {
+/* 헤더 내부 레이아웃: 왼쪽 로고, 가운데 메뉴, 오른쪽 모바일 버튼 */
+.site-header-inner {
   max-width: 1120px;
   margin: 0 auto;
   padding: 16px 20px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* 로고 / 가운데 / 메뉴버튼 */
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  column-gap: 24px;
 }
 
-.site-header__logo {
+/* 로고는 그리드 첫 컬럼, 왼쪽 정렬 */
+.site-header-logo {
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--text);
+  justify-self: start; /* 그리드 기준 왼쪽 고정 */
 }
 
-.site-header__nav {
+/* 가운데 영역 래퍼: nav를 중앙 정렬 */
+.site-header-center {
+  display: flex;
+  justify-content: center; /* 그리드 두 번째 칸 내에서 수평 가운데 */
+}
+
+/* 네비 메뉴(상단) */
+.site-header-nav {
   display: flex;
   gap: 20px;
   align-items: center;
 }
 
+/* 상단 메뉴 링크 공통 스타일 */
 .nav-link {
   font-size: 14px;
   text-transform: uppercase;
@@ -74,6 +84,7 @@ body {
   position: relative;
 }
 
+/* 활성/호버 상태 */
 .nav-link.is-active,
 .nav-link:hover {
   color: var(--text);
@@ -84,17 +95,17 @@ body {
 .nav-link:hover::after {
   content: "";
   position: absolute;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%); /* 밑줄도 가운데 정렬 */
   bottom: -6px;
-  width: 18px;          /* 밑줄 길이, 더 길게 하고 싶으면 늘려도 됨 */
+  width: 18px;
   height: 2px;
   background: var(--accent);
 }
 
 
-/* Mobile menu button */
-
-.site-header__menu-button {
+/* 모바일 메뉴 버튼 */
+.site-header-menu-button {
   display: none;
   background: transparent;
   border: none;
@@ -450,62 +461,24 @@ body {
   }
 }
 
-/* Nav dropdown – FvF 스타일 이식 */
-
+/* 드롭다운 전체가 헤더 폭만큼 펼쳐지고 가운데 정렬되도록 */
 .nav-item {
   position: relative;
 }
 
-.nav-toggle {
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-}
-
-/* 메인 메뉴(Stories 같은) 텍스트 + 밑줄 */
-.nav-link {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  text-decoration: none;
-  color: var(--muted);
-  position: relative;
-}
-
-.nav-link.is-active,
-.nav-link:hover {
-  color: var(--text);
-}
-
-.nav-link.is-active::after,
-.nav-link:hover::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 18px;
-  height: 2px;
-  background: var(--accent);
-}
-
-/* 데스크톱 서브메뉴 영역 (FvF: .sub-nav-dropdown) */
+/* 데스크톱에서 드롭다운 */
 .nav-submenu {
   position: absolute;
   left: 50%;
   top: 100%;
-  transform: translateX(-50%);
-  width: 100vw;
+  transform: translateX(-50%);   /* 상위 메뉴 기준 가로 가운데 */
+  width: 100vw;                  /* 뷰포트 전체 넓이 */
   margin-top: 20px;
-
   display: flex;
-  justify-content: center;
+  justify-content: center;       /* 안의 항목들을 가운데 정렬 */
   align-items: center;
   gap: 48px;
   padding: 24px 0;
-
   background: #fff;
   opacity: 0;
   visibility: hidden;
@@ -513,31 +486,28 @@ body {
   z-index: 30;
 }
 
-/* 서브 항목 (FvF: .sub-nav-item) */
-.nav-submenu__item {
+/* 하위 메뉴 항목 텍스트 가운데 정렬 */
+.nav-submenu-item {
   color: #111;
   font-size: 14px;
-  font-family: Nunito Sans, var(--font-sans);
+  font-family: "Nunito Sans", var(--font-sans);
   font-weight: 700;
   text-transform: uppercase;
   line-height: 17.5px;
   text-decoration: none;
   white-space: nowrap;
+  text-align: center;
 }
 
-.nav-submenu__item:hover {
-  text-decoration: underline #111111 2px;
-  text-underline-offset: 4px;
-}
-
-/* 데스크톱: 상단 메뉴에 롤오버하면 서브메뉴 나타남 */
+/* 호버 시 드롭다운 보이기 (데스크톱) */
 @media (min-width: 721px) {
   .nav-item.has-submenu:hover .nav-submenu {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0); /* 살짝 위에서 아래로 내려오는 느낌 */
   }
 }
+
 
 /* 모바일: 햄버거 열렸을 때 세로 리스트로 */
 @media (max-width: 720px) {
