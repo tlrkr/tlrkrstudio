@@ -9,50 +9,44 @@
 <body>
   <!-- Header / Navbar -->
   <header class="site-header">
-    <div class="site-header__inner">
-      <a href="#" class="site-header__logo">Tlrkr Studio</a>
-      <nav class="site-header__nav">
-  <div class="nav-item has-submenu">
-    <button class="nav-link nav-toggle" type="button">
-      Movies
+  <div class="site-header-inner">
+    <!-- 왼쪽 끝 고정 로고 -->
+    <a href="/" class="site-header-logo">Tlrkr Studio</a>
+
+    <!-- 가운데 정렬 네비 전체 래퍼 -->
+    <div class="site-header-center">
+      <nav class="site-header-nav">
+        <div class="nav-item has-submenu">
+          <button class="nav-link nav-toggle" type="button">Movies</button>
+          <div class="nav-submenu">
+            <!-- 하위메뉴들 -->
+          </div>
+        </div>
+
+        <div class="nav-item has-submenu">
+          <button class="nav-link nav-toggle" type="button">Drama</button>
+          <div class="nav-submenu">
+            <!-- 하위메뉴들 -->
+          </div>
+        </div>
+
+        <div class="nav-item has-submenu">
+          <button class="nav-link nav-toggle" type="button">Euijoo like</button>
+          <div class="nav-submenu">
+            <!-- 하위메뉴들 -->
+          </div>
+        </div>
+
+        <a href="https://tlrkr.github.io/tlrkrstudio/#" class="nav-link">About</a>
+      </nav>
+    </div>
+
+    <!-- 모바일 메뉴 버튼 그대로 유지 -->
+    <button class="site-header-menu-button" aria-label="Toggle navigation">
+      <span class="menu-icon"></span>
     </button>
-    <div class="nav-submenu">
-      <a href="#" class="nav-submenu__item">국내 영화</a>
-      <a href="#" class="nav-submenu__item">해외 영화</a>
-      <a href="#" class="nav-submenu__item">다큐멘터리</a>
-    </div>
   </div>
-
-  <div class="nav-item has-submenu">
-    <button class="nav-link nav-toggle" type="button">
-      Drama
-    </button>
-    <div class="nav-submenu">
-      <a href="#" class="nav-submenu__item">국내 드라마</a>
-      <a href="#" class="nav-submenu__item">해외 드라마</a>
-    </div>
-  </div>
-
-  <div class="nav-item has-submenu">
-    <button class="nav-link nav-toggle" type="button">
-      Euijoo like
-    </button>
-    <div class="nav-submenu">
-      <a href="#" class="nav-submenu__item">라이브 공연</a>
-      <a href="#" class="nav-submenu__item">뮤직 비디오</a>
-      <a href="#" class="nav-submenu__item">클래식</a>
-      <a href="#" class="nav-submenu__item">나의시선</a>
-    </div>
-  </div>
-
-  <a href="#" class="nav-link">About</a>
-</nav>
-
-      <button class="site-header__menu-button" aria-label="Toggle navigation">
-        <span class="menu-icon"></span>
-      </button>
-    </div>
-  </header>
+</header>
 
   <!-- Main -->
   <main class="page">
